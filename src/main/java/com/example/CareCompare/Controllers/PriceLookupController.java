@@ -2,17 +2,29 @@ package com.example.CareCompare.Controllers;
 
 
 import com.example.CareCompare.Models.Hospital;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.CareCompare.Models.PriceLookup;
+import com.example.CareCompare.Repositories.PriceLookupRepository;
+import com.example.CareCompare.Services.PriceLookupService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin
-public class PriceLookup {
-    @PostMapping(path="/hospital/add")
-    public String addHospital(@RequestBody Hospital hosp){
-        hospitalRepository.save(hosp);
+public class PriceLookupController {
+    @Autowired
+    private PriceLookupService priceLookupService;
+
+    @PostMapping(path="/pricelookup/add")
+    public String addPrice(@RequestParam Integer hospid,@RequestParam Integer procId,@RequestParam Double price){
+
+        priceLookupService.storePrice(hospid, procId, price);
         return "Saved";
+    }
+    @GetMapping(path="/allprices")
+    public List<PriceLookup> findallprices(){
+
+        return priceLookupService.findAll();
     }
 }
