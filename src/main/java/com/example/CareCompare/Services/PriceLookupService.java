@@ -9,6 +9,7 @@ import com.example.CareCompare.Repositories.ProceduresRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -24,10 +25,14 @@ public class PriceLookupService {
         return hospitalRepository.findById(id).get();
     }
 
-    public Procedures findProc(Integer id){
+    public Procedures findProc(String code){
 
-        return proceduresRepository.findById(id).get();
-    }
+        return proceduresRepository.getByCode(code);
+
+        }
+
+
+
     public void storePrice(Integer hospid,Integer procId,Double price){
         PriceLookup test = new PriceLookup();
         test.setHosp(hospitalRepository.findById(hospid).get());
@@ -39,7 +44,13 @@ public class PriceLookupService {
     }
     public List <PriceLookup> findAll(){
 
+
         return priceLookupRepository.findAll();
     }
 
+    public List <PriceLookup> findbyProc(Procedures procedures){
+
+
+        return priceLookupRepository.getByProc(procedures);
+    }
 }

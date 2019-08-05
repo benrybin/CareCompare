@@ -12,4 +12,6 @@ public interface ProceduresRepository extends JpaRepository<Procedures,Integer> 
 
     @Override
     List<Procedures> findAllById(Iterable<Integer> iterable);
+    Procedures getByCode(String code);
+
 }
