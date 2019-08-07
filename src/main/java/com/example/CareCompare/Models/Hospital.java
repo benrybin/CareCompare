@@ -16,6 +16,16 @@ public class Hospital {
     private String state;
     private String zip;
 
+    public Float getDistance() {
+        return this.distance;
+    }
+
+    public void setDistance(final Float distance) {
+        this.distance = distance;
+    }
+
+    @Transient
+    private Float distance;
 
 
     private String namehosp;

@@ -45,4 +45,5 @@ public class PriceLookup {
     public void setPrice(final Double price) {
         this.price = price;
     }
+
 }
