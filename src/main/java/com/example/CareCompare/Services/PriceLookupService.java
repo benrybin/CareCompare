@@ -30,7 +30,10 @@ public class PriceLookupService {
         return proceduresRepository.getByCode(code);
 
         }
+    public Procedures findProcbyDescrip(String descrip){
 
+       return proceduresRepository.getByDescrip(descrip);
+    }
 
 
     public void storePrice(Integer hospid,Integer procId,Double price){
@@ -53,4 +56,5 @@ public class PriceLookupService {
 
         return priceLookupRepository.getByProc(procedures);
     }
+
 }

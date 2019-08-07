@@ -22,7 +22,7 @@ import java.util.List;
 public class PriceLookupController {
     @Autowired
     private PriceLookupService priceLookupService;
-    @Autowired
+
 
 
     @PostMapping(path="/pricelookup/add")
@@ -34,7 +34,7 @@ public class PriceLookupController {
     @GetMapping(path="/pricerequest")
     public List<PriceLookup> findallprices(@RequestParam String code,@RequestParam Integer zip){
         String zipUrl = "https://www.zipcodeapi.com/rest/1S8VbZ23W8a1okx7o1XJnkDioLCdzkPuCQtBwZTYwFAu9nIA3aVPouPUzdZh5JLG/distance.json/";
-        Procedures temp =  priceLookupService.findProc(code);
+        Procedures temp =  priceLookupService.findProcbyDescrip(code);
        List <PriceLookup> distanceFinder =  priceLookupService.findbyProc(temp);
         RestTemplate restTemplate = new RestTemplate();
 

@@ -11,4 +11,5 @@ import java.util.List;
 public interface PriceLookupRepository extends JpaRepository<PriceLookup,Integer> {
 List<PriceLookup> getByProc(Procedures proc);
 
+
 }
